@@ -66,5 +66,21 @@ router.post("/saveTransaction", async (req, res) => {
         return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 });
+router.get('/getTransactions/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const transactions = await Transaction.find({ payer_id: userId });
+
+        if (!transactions.length) {
+            return res.status(404).json({ message: "No transactions found" });  // ✅ Ensure response is returned
+        }
+
+        res.status(200).json({ transactions });  // ✅ Only one response sent
+    } catch (error) {
+        console.error("Error fetching transactions:", error);
+        return res.status(500).json({ message: "Internal Server Error" });  // ✅ Return ensures no duplicate response
+    }
+});
+
 
 module.exports = router;

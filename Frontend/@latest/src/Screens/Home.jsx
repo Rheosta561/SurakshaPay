@@ -52,7 +52,7 @@ function Home() {
   financial data safe at every step.
 </div>
 <div className='w-screen flex '>
-            <button className='mx-auto mt-2 p-3 w-fit bg-emerald-900 text-sm rounded-lg text-white'>Get Started</button></div>
+            <button className='mx-auto mt-2 p-3 w-fit bg-emerald-900 text-sm rounded-lg text-white' onClick={handleTrackPayment}>Get Started</button></div>
         
 
 

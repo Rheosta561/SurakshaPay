@@ -9,7 +9,9 @@ function Transaction() {
   const [message, setMessage] = useState("");
 
   // Fetch user details from localStorage
-  const userId = localStorage.getItem("user"); // User is both payer & payee
+  const userId = JSON.parse(localStorage.getItem("user")).id;
+   // User is both payer & payee
+   console.log(userId);
 
   // Generate QR Code when UPI ID or amount changes
   useEffect(() => {

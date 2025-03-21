@@ -7,6 +7,7 @@ import Home from './Screens/Home'
 import Navbar from './Navbar'
 import Payment from './Screens/Payment'
 import Transaction from './Screens/Transaction'
+import Dashboard from './Dashboard'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
     <Route path ="/home" element={<Home/>} />
     <Route path ="/payment" element={<Payment/>} />
     <Route path = '/transaction' element={<Transaction/>} />
+    <Route path = '/track' element={<Dashboard/> } />
 
     </Routes>
     </BrowserRouter>
