@@ -27,7 +27,7 @@ function Payment() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/auth/saveMethod', {
+      const response = await fetch('https://surakshapay.onrender.com/api/auth/saveMethod', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.id, upi: upiId, card_number: '' }), // No card number for now

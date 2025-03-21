@@ -54,7 +54,7 @@ function Transaction() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/saveTransaction", {
+      const response = await fetch("https://surakshapay.onrender.com/api/auth/saveTransaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transactionData),
