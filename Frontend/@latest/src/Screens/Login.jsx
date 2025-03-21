@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-
 function Login() {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
+  // Handle input field changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
 
-    // Mock authentication logic (Replace with API call)
-    if (formData.username === 'admin' && formData.password === 'password') {
-      setMessage('');
-      navigate('/dashboard'); // Navigate to dashboard upon successful login
-    } else {
-      setMessage('Invalid username or password');
+      if (response.ok) {
+        // Store JWT token in local storage
+        localStorage.setItem('token', data.token);
+        setMessage('Login successful! Redirecting...');
+        setTimeout(() => navigate('/dashboard'), 1500); // Redirect after success
+      } else {
+        setMessage(data.message || 'Invalid email or password');
+      }
+    } catch (error) {
+      setMessage('Server error. Please try again.');
     }
   };
 
@@ -38,14 +50,14 @@ function Login() {
               {message && <p className="text-red-500">{message}</p>}
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900">
-                    Username
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
+                    Email
                   </label>
                   <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={formData.username}
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
                     onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     required
