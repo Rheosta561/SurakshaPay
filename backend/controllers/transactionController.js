@@ -1,4 +1,4 @@
-const Transaction = require('../models/transactions'); // Import Transaction Model
+const Transaction = require('../models/Transaction'); // Import Transaction Model
 
 // @desc   Create and Store a New Transaction
 // @route  POST /api/transactions

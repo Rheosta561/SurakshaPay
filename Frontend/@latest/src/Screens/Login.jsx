@@ -15,18 +15,20 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
         // Store JWT token in local storage
         localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
         setMessage('Login successful! Redirecting...');
-        setTimeout(() => navigate('/dashboard'), 1500); // Redirect after success
+        setTimeout(() => navigate('/home'), 1500); // Redirect after success
       } else {
         setMessage(data.message || 'Invalid email or password');
       }

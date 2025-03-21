@@ -12,7 +12,8 @@ const transactionSchema = new mongoose.Schema({
   payer_card_brand: { type: String, required: true },
   payer_device: { type: String, required: true },
   payer_browser: { type: String, required: true },
-  payee_id: { type: String, required: true }
+  payer_id:{type:mongoose.Schema.Types.ObjectId, ref:'User', required:true},
+  payee_id: { type: mongoose.Schema.Types.ObjectId, ref:'User', required: true }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Transaction', transactionSchema);
