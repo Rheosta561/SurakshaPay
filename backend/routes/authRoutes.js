@@ -6,6 +6,7 @@ const Method = require("../models/Method");
 const { v4: uuidv4 } = require("uuid");
 const Transaction = require("../models/Transaction");
 
+
 router.post("/register", register);
 router.post("/login", login);
 router.post('/saveMethod' , async(req,res)=>{
