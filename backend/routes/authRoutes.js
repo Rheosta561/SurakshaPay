@@ -45,19 +45,19 @@ router.post("/saveTransaction", async (req, res) => {
 
 
         const newTransaction = await Transaction.create({
-            transaction_id: uuidv4(),
+            transaction_id_anonymous: uuidv4(),
             transaction_date: new Date(),
             transaction_amount: amount,
             transaction_channel: channel,
-            transaction_payment_mode: paymentMode,
-            payment_gateway_bank: bank,
-            payer_email: email,
-            payer_mobile: mobile,
+            transaction_payment_mode_anonymous: paymentMode,
+            payment_gateway_bank_anonymous: bank,
+            payer_email_anonymous: email,
+            payer_mobile_anonymous: mobile,
             payer_card_brand: cardBrand,
             payer_device: device,
-            payer_browser: browser,
+            payer_browser_anonymous: browser,
             payer_id: userId,
-            payee_id: payeeId
+            payee_id_anonymous: payeeId
         });
 
         return res.status(201).json({ success: true, message: "Transaction saved successfully!", transaction: newTransaction });

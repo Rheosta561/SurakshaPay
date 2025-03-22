@@ -8,7 +8,7 @@ exports.createTransaction = async (req, res) => {
         const transactionData = req.body;
 
         // Check if transaction ID already exists to prevent duplicates
-        const existingTransaction = await Transaction.findOne({ transaction_id: transactionData.transaction_id });
+        const existingTransaction = await Transaction.findOne({ transaction_id_anonymous: transactionData.transaction_id });
         if (existingTransaction) {
             return res.status(400).json({ message: 'Transaction ID already exists' });
         }
@@ -40,7 +40,7 @@ exports.getAllTransactions = async (req, res) => {
 // @access Public
 exports.getTransactionById = async (req, res) => {
     try {
-        const transaction = await Transaction.findOne({ transaction_id: req.params.id });
+        const transaction = await Transaction.findOne({ transaction_id_anonymous: req.params.id });
 
         if (!transaction) {
             return res.status(404).json({ message: 'Transaction not found' });

@@ -9,6 +9,7 @@ import Payment from './Screens/Payment'
 import Transaction from './Screens/Transaction'
 import Dashboard from './Dashboard'
 import About from "./Screens/About"
+import Chatbot from './Screens/Chatbot'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
     <Route path ="/payment" element={<Payment/>} />
     <Route path = '/transaction' element={<Transaction/>} />
     <Route path = '/track' element={<Dashboard/> } />
+    <Route path = '/chatbot' element={<Chatbot/>} />
 
     </Routes>
     </BrowserRouter>

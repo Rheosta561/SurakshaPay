@@ -32,7 +32,7 @@ function Dashboard() {
             id: txn.transaction_id,
             date: new Date(txn.transaction_date).toLocaleDateString(),
             amount: txn.transaction_amount,
-            status: txn.transaction_payment_mode
+            status: txn.transaction_payment_mode_anonymous
           })));
         } catch (error) {
           console.error('Error fetching transactions:', error);
