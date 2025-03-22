@@ -153,7 +153,7 @@ function Chatbot() {
             <div className="text-xs">
               <p>Hi There, I'm Vikrant, your financial assistant!</p>
               <p>
-                I'm here to help you with any information you need regarding our content and your rights as a tenant.
+                I'm here to help you with any information you need regarding our content and your rights .
               </p>
               <p>Feel free to ask me anything!</p>
             </div>
