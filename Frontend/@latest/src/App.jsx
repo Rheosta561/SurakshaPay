@@ -8,6 +8,7 @@ import Navbar from './Navbar'
 import Payment from './Screens/Payment'
 import Transaction from './Screens/Transaction'
 import Dashboard from './Dashboard'
+import About from "./Screens/About"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Start/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUp/>} />
+      <Route path="/about" element={<About/>} />
       
     </Routes>
     <Navbar/>
